@@ -24,7 +24,7 @@ class TodoVersionTestTest extends FunSuite {
 
     val foundTodo = service.findTodo(todoUUID)
 
-    assert(foundTodo.version === 11) // create todo event + 1000 tasks events
+    assert(foundTodo.version === 11) // create todo event + 10 tasks events
   }
 
 }
