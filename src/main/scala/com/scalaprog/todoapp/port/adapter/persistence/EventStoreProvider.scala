@@ -4,6 +4,7 @@ import com.mongodb._
 import com.scalaprog.todoapp.domain.common.AbstractEvent
 import java.util.UUID
 import java.util.Date
+import com.scalaprog.todoapp.port.adapter.eventbus.EventBus
 
 class EventStoreProvider extends Snapshots {
   val MONGOHQ_URL: String = "MONGOHQ_URL"
@@ -42,6 +43,7 @@ class EventStoreProvider extends Snapshots {
     doc.put("event", jsonTool.toJson(event))
     doc.put("date", new Date())
     eventCollection.insert(doc)
+    EventBus.publishEvent(event) // publish the event to the eventbus, should not be here..
   }
 
   def append(eventId : EventId, events: List[AbstractEvent]) {
