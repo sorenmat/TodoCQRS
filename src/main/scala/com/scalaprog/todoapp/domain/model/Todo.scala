@@ -7,6 +7,14 @@ import java.util.UUID
 import com.scalaprog.todoapp.domain.common.AbstractEvent
 import com.scalaprog.todoapp.domain.model.event.TodoCreated
 
+/**
+ * Todo aggregate root.
+ * This is the entry point to the cloud of objects below it. Currently one one :)
+ * All modifications to the Todo and Tasks goes through here.
+ *
+ * The state it keeps, is on order to decide business decisions and populate events.
+ * @param id
+ */
 class Todo(id: UUID) extends AggregateRoot(id) {
 
   var tasks = List[Task]()

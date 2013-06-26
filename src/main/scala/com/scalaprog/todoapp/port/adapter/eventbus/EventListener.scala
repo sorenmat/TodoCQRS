@@ -7,6 +7,10 @@ import com.scalaprog.todoapp.domain.common.AbstractEvent
  */
 trait EventListener {
 
+  /**
+   * A new event has been published, the implementation should handle this
+   * @param event
+   */
   def eventOccurred(event: AbstractEvent)
 
 }
